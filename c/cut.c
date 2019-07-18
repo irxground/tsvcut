@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#define SIZE (4 * 1024)
-
 int find_index(char *heystack, char *needle) {
 	int index = 0;
 	size_t needle_len = strlen(needle);
@@ -29,7 +27,7 @@ int find_index(char *heystack, char *needle) {
 	return -1;
 }
 
-char buff[SIZE];
+char buff[1024 * 1024];
 int main(int argc, char** argv) {
 	if (argc <= 1) {
 		fprintf(stderr, "Field name is required.\n");
@@ -53,7 +51,6 @@ int main(int argc, char** argv) {
 	fputs(field, stdout);
 	fputc('\n', stdout);
 	while (1) {
-		memset(buff, '\0', sizeof(buff));
 		if (fgets(buff, sizeof(buff), stdin) == NULL) {
 			break;
 		}
